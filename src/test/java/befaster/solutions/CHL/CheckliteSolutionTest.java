@@ -60,6 +60,8 @@ public class CheckliteSolutionTest {
     // Can be done using a parameterised test but I am having trouble setting up gradle  with junit 5
     public void checkoutWithMultipleQuantitiesOfSameItem() {
         assertThat(solution.checklite("FF"), is(equalTo(20)));
+        assertThat(solution.checklite("FFFF"), is(equalTo(30)));
+        assertThat(solution.checklite("FFFFFF"), is(equalTo(40)));
         assertThat(solution.checklite("EEB"), is(equalTo(80)));
         assertThat(solution.checklite("EEEEBB"), is(equalTo(160)));
         assertThat(solution.checklite("EEEB"), is(equalTo(120)));
@@ -82,5 +84,6 @@ public class CheckliteSolutionTest {
         assertThat(solution.checklite("BBEEB"), is(equalTo(125)));
     }
 }
+
 
 
