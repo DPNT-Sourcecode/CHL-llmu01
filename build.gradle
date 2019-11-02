@@ -20,6 +20,7 @@ dependencies {
     compile 'com.google.guava:guava:18.0'
 
 
+    testCompile ('junit:junit-jupiter:4.12')
     testCompile ('junit:junit:4.12') {
         exclude module : 'hamcrest-core'
     }
@@ -65,3 +66,4 @@ jacocoTestReport {
         html.destination file("${buildDir}/jacocoHtml")
     }
 }
+

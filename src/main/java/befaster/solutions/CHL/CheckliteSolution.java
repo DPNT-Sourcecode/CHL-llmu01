@@ -6,7 +6,10 @@ public class CheckliteSolution {
             return -1;
         }
 
-
+        if("A".equalsIgnoreCase(skus)) {
+            return 50;
+        }
         return 0;
     }
 }
+
