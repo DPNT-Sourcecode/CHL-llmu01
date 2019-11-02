@@ -1,14 +1,13 @@
 package befaster.solutions.CHL;
 
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 public class Item {
 
     private Character name;
     private int basePrice;
 
-    private PriceBasedOffer priceBasedOffer;
+    private List<PriceBasedOffer> priceBasedOffer;
     private FreebieOffer freebieOffer;
 
     public Item(Character name, int basePrice) {
@@ -19,7 +18,7 @@ public class Item {
     public Item(Character name, int basePrice, PriceBasedOffer priceBasedOffer) {
         this.name = name;
         this.basePrice = basePrice;
-        this.priceBasedOffer = priceBasedOffer;
+        this.priceBasedOffer = Collections.singletonList(priceBasedOffer);
     }
 
     public Item(Character name, int basePrice, FreebieOffer freebieOffer) {
@@ -36,7 +35,7 @@ public class Item {
         return basePrice;
     }
 
-    public Optional<PriceBasedOffer> getPriceBasedOffer() {
+    public Optional<List<PriceBasedOffer>> getPriceBasedOffer() {
         return Optional.ofNullable(priceBasedOffer);
     }
     public Optional<FreebieOffer> getFreebieOffer() {
@@ -62,3 +61,4 @@ public class Item {
 
 
 }
+
