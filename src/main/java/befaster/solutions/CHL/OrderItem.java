@@ -38,8 +38,14 @@ public class OrderItem {
     }
 
     public Optional<Item> applyFreebie() {
-        return purchasedItem.getFreebieOffer()
-                .map(FreebieOffer::getFreebieItem);
+        if(purchasedItem.getFreebieOffer().isPresent()) {
+            FreebieOffer freebieOffer = purchasedItem.getFreebieOffer().get();
+
+            if (purchasedQuantity == freebieOffer.getOfferQuantity()) {
+                return Optional.of(freebieOffer.getFreebieItem());
+            }
+        }
+        return Optional.empty();
     }
 
     @Override
@@ -57,4 +63,5 @@ public class OrderItem {
         return Objects.hash(purchasedItem, purchasedQuantity, price);
     }
 }
+
 
