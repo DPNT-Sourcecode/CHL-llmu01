@@ -41,4 +41,13 @@ public class OrderItemTest {
 
         assertThat(orderItem.computePrice()).isEqualTo(100);
     }
+
+    @Test
+    public void computePriceWhenPurchasedQuantityIsGreaterThanOfferQuantity() {
+        SpecialOffer specialOffer = new SpecialOffer(3, 130);
+        Item item = new Item('A', 50, Optional.of(specialOffer));
+        OrderItem orderItem = new OrderItem(item, 4);
+
+        assertThat(orderItem.computePrice()).isEqualTo(180);
+    }
 }
