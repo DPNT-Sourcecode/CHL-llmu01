@@ -21,19 +21,23 @@ public class CheckliteSolution {
         Map<Character, OrderItem> orderItems = new HashMap<>();
         for (Character item: items) {
             if (priceTable.containsKey(item)) {
-                OrderItem itemToAdd = new OrderItem(priceTable.get(item), 1);
-
-                if (orderItems.containsKey(item)) {
-                    orderItems.get(item).incrementQuantity();
-                } else {
-                    orderItems.put(item, itemToAdd);
-                }
+                addItemToOrder(orderItems, item);
             } else {
                 return -1;
             }
         }
 
         return calculateTotalPrice(orderItems);
+    }
+
+    private void addItemToOrder(Map<Character, OrderItem> orderItems, Character item) {
+        OrderItem itemToAdd = new OrderItem(priceTable.get(item), 1);
+
+        if (orderItems.containsKey(item)) {
+            orderItems.get(item).incrementQuantity();
+        } else {
+            orderItems.put(item, itemToAdd);
+        }
     }
 
     private int calculateTotalPrice(Map<Character, OrderItem> orderItems) {
@@ -55,6 +59,7 @@ public class CheckliteSolution {
         priceTable.put(itemD.getName(), itemD);
     }
 }
+
 
 
 
