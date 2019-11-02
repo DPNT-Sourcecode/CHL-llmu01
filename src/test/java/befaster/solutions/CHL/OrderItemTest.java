@@ -25,11 +25,20 @@ public class OrderItemTest {
     }
 
     @Test
-    public void computePriceWithSpecialOffer() {
+    public void computePriceWithSpecialOfferMatchingPurchasedQuantity() {
         SpecialOffer specialOffer = new SpecialOffer(3, 130);
         Item item = new Item('A', 50, Optional.of(specialOffer));
         OrderItem orderItem = new OrderItem(item, 3);
 
         assertThat(orderItem.computePrice()).isEqualTo(130);
+    }
+
+    @Test
+    public void computePriceWhenPurchasedQuantityIsLessThanOfferQuantity() {
+        SpecialOffer specialOffer = new SpecialOffer(3, 130);
+        Item item = new Item('A', 50, Optional.of(specialOffer));
+        OrderItem orderItem = new OrderItem(item, 2);
+
+        assertThat(orderItem.computePrice()).isEqualTo(100);
     }
 }

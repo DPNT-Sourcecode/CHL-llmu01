@@ -3,20 +3,27 @@ package befaster.solutions.CHL;
 public class OrderItem {
 
     private Item purchasedItem;
-    private int quantity;
+    private int purchasedQuantity;
     private int price;
 
-    public OrderItem(Item purchasedItem, int quantity) {
+    public OrderItem(Item purchasedItem, int purchasedQuantity) {
         this.purchasedItem = purchasedItem;
-        this.quantity = quantity;
+        this.purchasedQuantity = purchasedQuantity;
     }
 
     public void incrementQuantity() {
-        quantity = quantity + 1;
+        purchasedQuantity = purchasedQuantity + 1;
     }
 
     public int computePrice() {
-        price = quantity * purchasedItem.getBasePrice();
+        if(purchasedItem.getSpecialOffer().isPresent()) {
+            SpecialOffer specialOffer = purchasedItem.getSpecialOffer().get();
+           if ( purchasedQuantity == specialOffer.getOfferQuantity()){
+               return specialOffer.getOfferPrice();
+           }
+        }
+
+        price = purchasedQuantity * purchasedItem.getBasePrice();
         return price;
     }
 }
