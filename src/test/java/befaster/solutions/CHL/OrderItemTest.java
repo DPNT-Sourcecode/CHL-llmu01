@@ -84,6 +84,18 @@ public class OrderItemTest {
     }
 
     @Test
+    public void applyFreebieOfferWithMultipleTimes() {
+        Item freeItem = new Item('B', 0);
+        FreebieOffer freebieOffer = new FreebieOffer(2, freeItem);
+        Item source = new Item('E', 50, freebieOffer);
+
+        OrderItem orderItem = new OrderItem(source, 3);
+
+        assertThat(orderItem.computePrice()).isEqualTo(50);
+        assertThat(orderItem.applyFreebie()).isPresent().hasValue(freeItem);
+    }
+
+    @Test
     public void freebieOfferIsNotAppliedWhenQuantityDoesNotMatch() {
         Item freeItem = new Item('B', 0);
         FreebieOffer freebieOffer = new FreebieOffer(2, freeItem);

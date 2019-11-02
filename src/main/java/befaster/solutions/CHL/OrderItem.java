@@ -51,7 +51,7 @@ public class OrderItem {
         if(purchasedItem.getFreebieOffer().isPresent()) {
             FreebieOffer freebieOffer = purchasedItem.getFreebieOffer().get();
 
-            if (purchasedQuantity / freebieOffer.getOfferQuantity()) {
+            if (purchasedQuantity == freebieOffer.getOfferQuantity()) {
                 return Optional.of(freebieOffer.getFreebieItem());
             }
         }
@@ -73,4 +73,5 @@ public class OrderItem {
         return Objects.hash(purchasedItem, purchasedQuantity, price);
     }
 }
+
 
