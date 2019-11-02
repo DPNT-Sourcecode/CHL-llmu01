@@ -28,9 +28,15 @@ public class CheckliteSolution {
                 } else {
                     orderItems.put(item, itemToAdd);
                 }
+            } else {
+                return -1;
             }
         }
 
+        return calculateTotalPrice(orderItems);
+    }
+
+    private int calculateTotalPrice(Map<Character, OrderItem> orderItems) {
         return orderItems.values().stream().mapToInt(OrderItem::computePrice).sum();
     }
 
@@ -49,5 +55,6 @@ public class CheckliteSolution {
         priceTable.put(itemD.getName(), itemD);
     }
 }
+
 
 
