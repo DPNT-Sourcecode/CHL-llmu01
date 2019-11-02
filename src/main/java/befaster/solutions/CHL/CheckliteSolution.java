@@ -20,13 +20,11 @@ public class CheckliteSolution {
 
         Map<Character, OrderItem> orderItems = new HashMap<>();
         for (Character item: items) {
-            char upperCase = Character.toUpperCase(item);
+            if (priceTable.containsKey(item)) {
+                OrderItem itemToAdd = new OrderItem(priceTable.get(item), 1);
 
-            if (priceTable.containsKey(upperCase)) {
-                OrderItem itemToAdd = new OrderItem(priceTable.get(upperCase), 1);
-
-                if (orderItems.containsKey(upperCase)) {
-                    orderItems.get(upperCase).incrementQuantity();
+                if (orderItems.containsKey(item)) {
+                    orderItems.get(item).incrementQuantity();
                 } else {
                     orderItems.put(item, itemToAdd);
                 }
@@ -51,4 +49,5 @@ public class CheckliteSolution {
         priceTable.put(itemD.getName(), itemD);
     }
 }
+
 
