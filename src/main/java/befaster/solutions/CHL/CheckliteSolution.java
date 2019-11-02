@@ -16,15 +16,14 @@ public class CheckliteSolution {
     }
 
     public Integer checklite(String skus) {
-        if (skus == null || skus.trim().isEmpty()) {
-            return 0;
-        }
+        if (skus == null) return -1;
+        if (skus.trim().isEmpty()) return 0;
 
         char[] items = skus.toCharArray();
 
         int total = 0;
         for (Character item: items) {
-            total = total + priceTable.get(item);
+            total = total + priceTable.get(Character.toUpperCase(item));
         }
 
         return total;

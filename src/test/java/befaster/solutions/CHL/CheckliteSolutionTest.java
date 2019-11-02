@@ -63,4 +63,8 @@ public class CheckliteSolutionTest {
         assertThat(solution.checklite("ABC"), is(equalTo(100)));
     }
 
+    @Test
+    public void handleLowercaseItems() {
+        assertThat(solution.checklite("a"), is(equalTo(50)));
+    }
 }
