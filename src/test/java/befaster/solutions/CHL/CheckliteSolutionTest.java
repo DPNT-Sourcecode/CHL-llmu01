@@ -3,11 +3,17 @@ package befaster.solutions.CHL;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.Arrays;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class CheckliteSolutionTest {
 
@@ -29,8 +35,15 @@ public class CheckliteSolutionTest {
     }
 
     @ParameterizedTest
-    @ValueSource({"", ""})
-    public void calculateCostOfSingleSku() {
-        assertThat(solution.checklite("A")).isEqualTo(50);
+    @MethodSource("stringIntProvider")
+    public void calculateCostOfSingleSku(String sku, int total) {
+        assertThat(solution.checklite(sku)).isEqualTo(total);
+    }
+
+    static Stream<Arguments> stringIntProvider() {
+        return Stream.of(
+                arguments("A", 50),
+                arguments("B", 30)
+        );
     }
 }
