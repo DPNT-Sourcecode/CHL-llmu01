@@ -16,16 +16,22 @@ public class CheckliteSolution {
 
         char[] items = skus.toCharArray();
 
-        Set<OrderItem> orderItems = new HashSet<>();
+        Map<Character, OrderItem> orderItems = new HashMap<>();
         for (Character item: items) {
             char upperCase = Character.toUpperCase(item);
 
             if (priceTable.containsKey(upperCase)) {
-                orderItems.add(new OrderItem(priceTable.get(upperCase), 1));
+                OrderItem itemToAdd = new OrderItem(priceTable.get(upperCase), 1);
+
+                if (orderItems.containsKey(upperCase)) {
+                    orderItems.get(upperCase).incrementQuantity();
+                } else {
+                    orderItems.put(item, itemToAdd);
+                }
             }
         }
 
-        return orderItems.stream().mapToInt(OrderItem::computePrice).sum();
+        return orderItems.values().stream().mapToInt(OrderItem::computePrice).sum();
     }
 
     private void initialisePriceTable() {
