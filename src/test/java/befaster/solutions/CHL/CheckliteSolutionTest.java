@@ -1,11 +1,10 @@
 package befaster.solutions.CHL;
 
-import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class CheckliteSolutionTest {
 
@@ -14,6 +13,11 @@ public class CheckliteSolutionTest {
     @Test
     public void handleEmptySkus() {
         assertThat(solution.checklite(""), is(equalTo(-1)));
+    }
+
+    @Test
+    public void handleNullSkus() {
+        assertThat(solution.checklite(null), is(equalTo(-1)));
     }
 
 }
