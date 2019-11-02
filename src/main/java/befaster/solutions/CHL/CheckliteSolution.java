@@ -5,6 +5,8 @@ public class CheckliteSolution {
         if (skus == null || skus.trim().isEmpty()) {
             return -1;
         }
+
+
         return 0;
     }
 }
