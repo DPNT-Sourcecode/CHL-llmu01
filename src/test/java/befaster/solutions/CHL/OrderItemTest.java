@@ -104,7 +104,6 @@ public class OrderItemTest {
         OrderItem orderItem = new OrderItem(source, 1);
 
         assertThat(orderItem.computePrice()).isEqualTo(50);
-        assertThat(orderItem.applyFreebie()).isEmpty();
+        assertThat(orderItem.applyFreebie()).hasValue(Lists.newArrayList());
     }
 }
-
