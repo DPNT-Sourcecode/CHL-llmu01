@@ -101,7 +101,7 @@ public class OrderItemTest {
         FreebieOffer freebieOffer = new FreebieOffer(2, freeItem);
         Item source = new Item('F', 10, freebieOffer);
 
-        OrderItem orderItem = new OrderItem(source, 3);
+        OrderItem orderItem = new OrderItem(source, 2);
 
         assertThat(orderItem.applyFreebie()).isPresent().hasValue(Lists.newArrayList(freeItem));
     }
@@ -118,3 +118,4 @@ public class OrderItemTest {
         assertThat(orderItem.applyFreebie()).hasValue(Lists.newArrayList());
     }
 }
+
