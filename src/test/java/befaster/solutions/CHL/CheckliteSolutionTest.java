@@ -34,7 +34,7 @@ public class CheckliteSolutionTest {
 
     @Test
     public void handleEmptySkus() {
-        assertThat(solution.checklite(""), is(equalTo(-1)));
+        assertThat(solution.checklite(""), is(equalTo(0)));
     }
 
     @Test
@@ -63,6 +63,4 @@ public class CheckliteSolutionTest {
         assertThat(solution.checklite("ABC"), is(equalTo(100)));
     }
 
-    @Test
-    public void 
 }
