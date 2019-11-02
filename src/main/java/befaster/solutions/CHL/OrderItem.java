@@ -18,8 +18,11 @@ public class OrderItem {
     public int computePrice() {
         if(purchasedItem.getSpecialOffer().isPresent()) {
             SpecialOffer specialOffer = purchasedItem.getSpecialOffer().get();
-           if ( purchasedQuantity == specialOffer.getOfferQuantity()){
+           if (purchasedQuantity == specialOffer.getOfferQuantity()){
                return specialOffer.getOfferPrice();
+           } else if (purchasedQuantity > specialOffer.getOfferQuantity()) {
+               int offerApplicableQuantity =  purchasedQuantity / specialOffer.getOfferQuantity();
+               
            }
         }
 
@@ -27,3 +30,4 @@ public class OrderItem {
         return price;
     }
 }
+
