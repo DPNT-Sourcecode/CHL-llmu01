@@ -24,5 +24,5 @@ public class CheckliteSolutionTest {
     public void skuStringIsTrimmed() {
         assertThat(solution.checklite("  "), is(equalTo(-1)));
     }
-
+    
 }
