@@ -37,7 +37,6 @@ public class CheckliteSolution {
         for (OrderItem orderItem : orderItems.values()) {
             orderItem.applyFreebie().map(freebieItems::add);
         }
-
         freebieItems.forEach(item -> {
             if (orderItems.containsKey(item.getName())) {
                 OrderItem orderItem = orderItems.get(item.getName());
@@ -82,3 +81,4 @@ public class CheckliteSolution {
         priceTable.put(itemE.getName(), itemE);
     }
 }
+
