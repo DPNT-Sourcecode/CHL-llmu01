@@ -23,4 +23,13 @@ public class OrderItemTest {
 
         assertThat(orderItem.computePrice()).isEqualTo(100);
     }
+
+    @Test
+    public void computePriceWithSpecialOffer() {
+        SpecialOffer specialOffer = new SpecialOffer(3, 130);
+        Item item = new Item('A', 50, Optional.of(specialOffer));
+        OrderItem orderItem = new OrderItem(item, 3);
+
+        assertThat(orderItem.computePrice()).isEqualTo(130);
+    }
 }
