@@ -1,5 +1,6 @@
 package befaster.solutions.CHL;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public class Item {
@@ -26,5 +27,17 @@ public class Item {
     public Optional<SpecialOffer> getSpecialOffer() {
         return specialOffer;
     }
-}
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return Objects.equals(name, item.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+}
