@@ -1,10 +1,15 @@
 package befaster.solutions.CHL;
 
+import java.util.Collections;
 import java.util.Map;
 
 public class CheckliteSolution {
 
     private Map<Character, Integer> priceTable;
+
+    public CheckliteSolution() {
+        this(Collections.emptyMap());
+    }
 
     public CheckliteSolution(Map<Character, Integer> priceTable) {
         this.priceTable = priceTable;
@@ -21,3 +26,4 @@ public class CheckliteSolution {
         return 0;
     }
 }
+
