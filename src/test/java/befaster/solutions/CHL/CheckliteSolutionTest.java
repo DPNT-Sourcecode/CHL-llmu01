@@ -4,18 +4,19 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.runner.RunWith;
 
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-public class CheckliteSolutionTest {
+class CheckliteSolutionTest {
 
     private CheckliteSolution solution = new CheckliteSolution();
 
     @Test
-    public void handleEmptySkus() {
+    void handleEmptySkus() {
         assertThat(solution.checklite("")).isEqualTo(-1);
     }
 
@@ -42,3 +43,4 @@ public class CheckliteSolutionTest {
         );
     }
 }
+
