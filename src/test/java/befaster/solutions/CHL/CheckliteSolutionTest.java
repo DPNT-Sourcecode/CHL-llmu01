@@ -28,6 +28,8 @@ public class CheckliteSolutionTest {
     public void setup() {
         solution = new CheckliteSolution(priceTable);
         when(priceTable.get('A')).thenReturn(50);
+        when(priceTable.get('B')).thenReturn(30);
+        when(priceTable.get('C')).thenReturn(20);
     }
 
     @Test
@@ -54,5 +56,10 @@ public class CheckliteSolutionTest {
     public void calculateUsesValueFromPriceTable() {
         assertThat(solution.checklite("A"), is(equalTo(50)));
         verify(priceTable).get('A');
+    }
+
+    @Test
+    public void calculateTotalForMultipleSkus() {
+        assertThat(solution.checklite("ABC"), is(equalTo(100)));
     }
 }
