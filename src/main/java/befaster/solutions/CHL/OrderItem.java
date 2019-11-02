@@ -25,8 +25,8 @@ public class OrderItem {
     }
 
     public int computePrice() {
-        if(purchasedItem.getPriceBasedOffer().isPresent()) {
-            PriceBasedOffer priceBasedOffer = purchasedItem.getPriceBasedOffer().get();
+        if(purchasedItem.getPriceBasedOffers().isPresent()) {
+            PriceBasedOffer priceBasedOffer = purchasedItem.getPriceBasedOffers().get().get(0);
 
            if (purchasedQuantity == priceBasedOffer.getOfferQuantity()) {
                return priceBasedOffer.getOfferPrice();
@@ -69,3 +69,4 @@ public class OrderItem {
         return Objects.hash(purchasedItem, purchasedQuantity, price);
     }
 }
+

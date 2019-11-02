@@ -7,7 +7,7 @@ public class Item {
     private Character name;
     private int basePrice;
 
-    private List<PriceBasedOffer> priceBasedOffer;
+    private List<PriceBasedOffer> priceBasedOffers;
     private FreebieOffer freebieOffer;
 
     public Item(Character name, int basePrice) {
@@ -15,10 +15,10 @@ public class Item {
         this.basePrice = basePrice;
     }
 
-    public Item(Character name, int basePrice, PriceBasedOffer priceBasedOffer) {
+    public Item(Character name, int basePrice, PriceBasedOffer priceBasedOffers) {
         this.name = name;
         this.basePrice = basePrice;
-        this.priceBasedOffer = Collections.singletonList(priceBasedOffer);
+        this.priceBasedOffers = Collections.singletonList(priceBasedOffers);
     }
 
     public Item(Character name, int basePrice, FreebieOffer freebieOffer) {
@@ -35,11 +35,15 @@ public class Item {
         return basePrice;
     }
 
-    public Optional<List<PriceBasedOffer>> getPriceBasedOffer() {
-        return Optional.ofNullable(priceBasedOffer);
+    public Optional<List<PriceBasedOffer>> getPriceBasedOffers() {
+        return Optional.ofNullable(priceBasedOffers);
     }
     public Optional<FreebieOffer> getFreebieOffer() {
         return Optional.ofNullable(freebieOffer);
+    }
+
+    public void setPriceBasedOffers(List<PriceBasedOffer> priceBasedOffers) {
+        this.priceBasedOffers = priceBasedOffers;
     }
 
     public void setFreebieOffer(FreebieOffer freebieOffer) {
@@ -61,4 +65,5 @@ public class Item {
 
 
 }
+
 

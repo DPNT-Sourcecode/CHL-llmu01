@@ -1,5 +1,6 @@
 package befaster.solutions.CHL;
 
+import com.google.common.collect.Lists;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -60,11 +61,14 @@ public class OrderItemTest {
 
     @Test
     public void useBestMatchingOfferForComputation() {
-        PriceBasedOffer priceBasedOffer = new PriceBasedOffer(5, 200);
-        Item item = new Item('A', 50, priceBasedOffer);
-        OrderItem orderItem = new OrderItem(item, 10);
+        PriceBasedOffer offer1 = new PriceBasedOffer(5, 200);
+        PriceBasedOffer offer2 = new PriceBasedOffer(3, 130);
 
-        assertThat(orderItem.computePrice()).isEqualTo(400);
+        Item item = new Item('A', 50);
+        item.setPriceBasedOffers(Lists.newArrayList(offer1, offer2));
+        OrderItem orderItem = new OrderItem(item, 5);
+
+        assertThat(orderItem.computePrice()).isEqualTo(200);
     }
 
     @Test
