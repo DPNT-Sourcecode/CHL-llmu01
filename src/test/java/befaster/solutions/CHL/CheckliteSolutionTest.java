@@ -4,10 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -27,9 +25,10 @@ public class CheckliteSolutionTest {
     @Before
     public void setup() {
         solution = new CheckliteSolution(priceTable);
-        when(priceTable.get('A')).thenReturn(50);
-        when(priceTable.get('B')).thenReturn(30);
-        when(priceTable.get('C')).thenReturn(20);
+        when(priceTable.getOrDefault('A', 0)).thenReturn(50);
+        when(priceTable.getOrDefault('B', 0)).thenReturn(30);
+        when(priceTable.getOrDefault('C', 0)).thenReturn(20);
+        when(priceTable.getOrDefault('X', 0)).thenReturn(0);
     }
 
     @Test
