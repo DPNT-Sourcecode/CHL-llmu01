@@ -22,6 +22,12 @@ public class Item {
         this.priceBasedOffer = priceBasedOffer;
     }
 
+    public Item(Character name, int basePrice, FreebieOffer freebieOffer) {
+        this.name = name;
+        this.basePrice = basePrice;
+        this.freebieOffer = freebieOffer;
+    }
+
     public Character getName() {
         return name;
     }
@@ -32,10 +38,6 @@ public class Item {
 
     public Optional<PriceBasedOffer> getPriceBasedOffer() {
         return Optional.ofNullable(priceBasedOffer);
-    }
-
-    public void setPriceBasedOffer(PriceBasedOffer priceBasedOffer) {
-        this.priceBasedOffer = priceBasedOffer;
     }
 
     public void setFreebieOffer(FreebieOffer freebieOffer) {

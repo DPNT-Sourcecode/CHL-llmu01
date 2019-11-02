@@ -1,6 +1,7 @@
 package befaster.solutions.CHL;
 
 import java.util.Objects;
+import java.util.Optional;
 
 public class OrderItem {
 
@@ -49,5 +50,10 @@ public class OrderItem {
     @Override
     public int hashCode() {
         return Objects.hash(purchasedItem, purchasedQuantity, price);
+    }
+
+    public Optional<Item> applyFreebie() {
+
+        return Optional.<Item>empty();
     }
 }

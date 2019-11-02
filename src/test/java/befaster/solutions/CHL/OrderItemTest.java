@@ -66,4 +66,16 @@ public class OrderItemTest {
 
         assertThat(orderItem.computePrice()).isEqualTo(400);
     }
+
+    @Test
+    public void applyFreebieOffer() {
+        Item freeItem = new Item('B', 0);
+        FreebieOffer freebieOffer = new FreebieOffer(2, freeItem);
+        Item source = new Item('A', 50, freebieOffer);
+
+        OrderItem orderItem = new OrderItem(source, 2);
+
+        assertThat(orderItem.computePrice()).isEqualTo(100);
+        assertThat(orderItem.applyFreebie()).isPresent().hasValue(freeItem);
+    }
 }
