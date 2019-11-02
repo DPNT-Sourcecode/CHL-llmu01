@@ -59,7 +59,3 @@ public class CheckliteSolution {
         priceTable.put(itemD.getName(), itemD);
     }
 }
-
-
-
-
