@@ -62,4 +62,7 @@ public class CheckliteSolutionTest {
     public void calculateTotalForMultipleSkus() {
         assertThat(solution.checklite("ABC"), is(equalTo(100)));
     }
+
+    @Test
+    public void 
 }

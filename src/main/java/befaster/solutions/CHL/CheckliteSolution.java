@@ -21,7 +21,13 @@ public class CheckliteSolution {
         }
 
         char[] items = skus.toCharArray();
-        return priceTable.get(items[0]);
+
+        int total = 0;
+        for (Character item: items) {
+            total = total + priceTable.get(item);
+        }
+
+        return total;
     }
 }
 
