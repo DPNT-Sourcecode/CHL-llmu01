@@ -2,15 +2,13 @@ package befaster.solutions.CHL;
 
 import org.junit.Test;
 
-import java.util.Optional;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OrderItemTest {
 
     @Test
     public void computePriceOfOrderItem() {
-        Item item = new Item('A', 50, Optional.empty());
+        Item item = new Item('A', 50);
         OrderItem orderItem = new OrderItem(item, 1);
 
         assertThat(orderItem.computePrice()).isEqualTo(50);
@@ -18,7 +16,7 @@ public class OrderItemTest {
 
     @Test
     public void computePriceWithMultipleQuantity() {
-        Item item = new Item('A', 50, Optional.empty());
+        Item item = new Item('A', 50);
         OrderItem orderItem = new OrderItem(item, 2);
 
         assertThat(orderItem.computePrice()).isEqualTo(100);
@@ -26,8 +24,8 @@ public class OrderItemTest {
 
     @Test
     public void computePriceWithSpecialOfferMatchingPurchasedQuantity() {
-        SpecialOffer specialOffer = new SpecialOffer(3, 130);
-        Item item = new Item('A', 50, Optional.of(specialOffer));
+        PriceBasedOffer priceBasedOffer = new PriceBasedOffer(3, 130);
+        Item item = new Item('A', 50, priceBasedOffer);
         OrderItem orderItem = new OrderItem(item, 3);
 
         assertThat(orderItem.computePrice()).isEqualTo(130);
@@ -35,8 +33,8 @@ public class OrderItemTest {
 
     @Test
     public void computePriceWhenPurchasedQuantityIsLessThanOfferQuantity() {
-        SpecialOffer specialOffer = new SpecialOffer(3, 130);
-        Item item = new Item('A', 50, Optional.of(specialOffer));
+        PriceBasedOffer priceBasedOffer = new PriceBasedOffer(3, 130);
+        Item item = new Item('A', 50, priceBasedOffer);
         OrderItem orderItem = new OrderItem(item, 2);
 
         assertThat(orderItem.computePrice()).isEqualTo(100);
@@ -44,8 +42,8 @@ public class OrderItemTest {
 
     @Test
     public void computePriceWhenPurchasedQuantityIsGreaterThanOfferQuantity() {
-        SpecialOffer specialOffer = new SpecialOffer(3, 130);
-        Item item = new Item('A', 50, Optional.of(specialOffer));
+        PriceBasedOffer priceBasedOffer = new PriceBasedOffer(3, 130);
+        Item item = new Item('A', 50, priceBasedOffer);
         OrderItem orderItem = new OrderItem(item, 4);
 
         assertThat(orderItem.computePrice()).isEqualTo(180);
@@ -53,8 +51,8 @@ public class OrderItemTest {
 
     @Test
     public void computePriceWhenMultipleOffersAreApplicable() {
-        SpecialOffer specialOffer = new SpecialOffer(3, 130);
-        Item item = new Item('A', 50, Optional.of(specialOffer));
+        PriceBasedOffer priceBasedOffer = new PriceBasedOffer(3, 130);
+        Item item = new Item('A', 50, priceBasedOffer);
         OrderItem orderItem = new OrderItem(item, 8);
 
         assertThat(orderItem.computePrice()).isEqualTo(360);
@@ -62,8 +60,8 @@ public class OrderItemTest {
 
     @Test
     public void useBestMatchingOfferForComputation() {
-        SpecialOffer specialOffer = new SpecialOffer(5, 200);
-        Item item = new Item('A', 50, Optional.of(specialOffer));
+        PriceBasedOffer priceBasedOffer = new PriceBasedOffer(5, 200);
+        Item item = new Item('A', 50, priceBasedOffer);
         OrderItem orderItem = new OrderItem(item, 10);
 
         assertThat(orderItem.computePrice()).isEqualTo(400);

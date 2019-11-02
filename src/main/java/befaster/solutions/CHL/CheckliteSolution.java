@@ -45,17 +45,23 @@ public class CheckliteSolution {
     }
 
     private void initialisePriceTable() {
-        SpecialOffer offerA = new SpecialOffer(3, 130);
-        Item itemA = new Item('A', 50, Optional.of(offerA));
+        PriceBasedOffer offerA = new PriceBasedOffer(3, 130);
+        Item itemA = new Item('A', 50, offerA);
         priceTable.put(itemA.getName(), itemA);
 
-        SpecialOffer offerB = new SpecialOffer(2, 45);
-        Item itemB = new Item('B', 30, Optional.of(offerB));
+        PriceBasedOffer offerB = new PriceBasedOffer(2, 45);
+        Item itemB = new Item('B', 30, offerB);
         priceTable.put(itemB.getName(), itemB);
 
-        Item itemC = new Item('C', 20, Optional.empty());
+        Item itemC = new Item('C', 20);
         priceTable.put(itemC.getName(), itemC);
-        Item itemD = new Item('D', 15, Optional.empty());
+        Item itemD = new Item('D', 15);
         priceTable.put(itemD.getName(), itemD);
+
+        Item itemE = new Item('E', 40);
+        FreebieOffer freebieOffer = new FreebieOffer(2, new Item(itemB.getName(), 0));
+        itemE.setFreebieOffer(freebieOffer);
+        priceTable.put(itemE.getName(), itemE);
     }
 }
+

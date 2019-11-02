@@ -2,12 +2,12 @@ package befaster.solutions.CHL;
 
 import java.util.Objects;
 
-public class SpecialOffer {
+public class PriceBasedOffer {
 
     private int offerQuantity;
     private int offerPrice;
 
-    public SpecialOffer(int offerQuantity, int offerPrice) {
+    public PriceBasedOffer(int offerQuantity, int offerPrice) {
         this.offerQuantity = offerQuantity;
         this.offerPrice = offerPrice;
     }
@@ -24,7 +24,7 @@ public class SpecialOffer {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SpecialOffer that = (SpecialOffer) o;
+        PriceBasedOffer that = (PriceBasedOffer) o;
         return offerQuantity == that.offerQuantity &&
                 offerPrice == that.offerPrice;
     }
@@ -34,3 +34,4 @@ public class SpecialOffer {
         return Objects.hash(offerQuantity, offerPrice);
     }
 }
+

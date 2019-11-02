@@ -8,12 +8,18 @@ public class Item {
     private Character name;
     private int basePrice;
 
-    private Optional<SpecialOffer> specialOffer;
+    private PriceBasedOffer priceBasedOffer;
+    private FreebieOffer freebieOffer;
 
-    public Item(Character name, int basePrice, Optional<SpecialOffer> specialOffer) {
+    public Item(Character name, int basePrice) {
         this.name = name;
         this.basePrice = basePrice;
-        this.specialOffer = specialOffer;
+    }
+
+    public Item(Character name, int basePrice, PriceBasedOffer priceBasedOffer) {
+        this.name = name;
+        this.basePrice = basePrice;
+        this.priceBasedOffer = priceBasedOffer;
     }
 
     public Character getName() {
@@ -24,8 +30,16 @@ public class Item {
         return basePrice;
     }
 
-    public Optional<SpecialOffer> getSpecialOffer() {
-        return specialOffer;
+    public Optional<PriceBasedOffer> getPriceBasedOffer() {
+        return Optional.ofNullable(priceBasedOffer);
+    }
+
+    public void setPriceBasedOffer(PriceBasedOffer priceBasedOffer) {
+        this.priceBasedOffer = priceBasedOffer;
+    }
+
+    public void setFreebieOffer(FreebieOffer freebieOffer) {
+        this.freebieOffer = freebieOffer;
     }
 
     @Override
@@ -41,3 +55,4 @@ public class Item {
         return Objects.hash(name);
     }
 }
+
