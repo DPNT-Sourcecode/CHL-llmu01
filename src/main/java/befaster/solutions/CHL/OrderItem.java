@@ -37,6 +37,11 @@ public class OrderItem {
         return price;
     }
 
+    public Optional<Item> applyFreebie() {
+        return purchasedItem.getFreebieOffer()
+                .map(FreebieOffer::getFreebieItem);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,9 +56,5 @@ public class OrderItem {
     public int hashCode() {
         return Objects.hash(purchasedItem, purchasedQuantity, price);
     }
-
-    public Optional<Item> applyFreebie() {
-
-        return Optional.<Item>empty();
-    }
 }
+

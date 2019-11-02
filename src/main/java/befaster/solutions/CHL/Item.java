@@ -39,6 +39,9 @@ public class Item {
     public Optional<PriceBasedOffer> getPriceBasedOffer() {
         return Optional.ofNullable(priceBasedOffer);
     }
+    public Optional<FreebieOffer> getFreebieOffer() {
+        return Optional.ofNullable(freebieOffer);
+    }
 
     public void setFreebieOffer(FreebieOffer freebieOffer) {
         this.freebieOffer = freebieOffer;
@@ -56,4 +59,7 @@ public class Item {
     public int hashCode() {
         return Objects.hash(name);
     }
+
+
 }
+
