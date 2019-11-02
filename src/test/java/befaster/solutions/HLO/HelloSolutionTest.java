@@ -11,9 +11,9 @@ public class HelloSolutionTest {
     private HelloSolution helloSolution = new HelloSolution();
 
     @Test
-    public void sayHelloWorldIgnoringParams() {
+    public void sayHelloToFriend() {
         String message = helloSolution.hello("joe");
-        assertThat(message, is(equalTo("Hello, World!")));
+        assertThat(message, is(equalTo("Hello, joe!")));
     }
 
 }
