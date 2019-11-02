@@ -59,4 +59,13 @@ public class OrderItemTest {
 
         assertThat(orderItem.computePrice()).isEqualTo(360);
     }
+
+    @Test
+    public void useBestMatchingOfferForComputation() {
+        SpecialOffer specialOffer = new SpecialOffer(5, 200);
+        Item item = new Item('A', 50, Optional.of(specialOffer));
+        OrderItem orderItem = new OrderItem(item, 10);
+
+        assertThat(orderItem.computePrice()).isEqualTo(400);
+    }
 }
