@@ -19,8 +19,11 @@ dependencies {
     compile 'com.mashape.unirest:unirest-java:1.4.9'
     compile 'com.google.guava:guava:18.0'
 
-
+    testCompile ('junit:junit:4.12') {
+        exclude module : 'hamcrest-core'
+    }
     testCompile('org.junit.jupiter:junit-jupiter:5.5.2')
+    testCompile('org.junit.jupiter:junit-jupiter-params:5.5.2')
     testCompile('org.junit.jupiter:junit-jupiter-params:5.5.2')
 
     testCompile('org.assertj:assertj-core:3.14.0')
