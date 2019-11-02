@@ -25,14 +25,17 @@ public class CheckliteSolution {
             }
         }
 
-        List<OrderItem> finalListOfItems = new LinkedList<>();
+        List<Item> freebieItems = new LinkedList<>();
         for (OrderItem orderItem : orderItems.values()) {
-            Optional<Item> freeItem = orderItem.applyFreebie();
-            freeItem.ifPresent(item -> finalListOfItems.add(new OrderItem(item, 1)));
+            orderItem.applyFreebie().map(freebieItems::add);
         }
 
-        finalListOfItems.addAll(orderItems.values());
-        return calculateTotalPrice(finalListOfItems);
+        freebieItems.forEach(item -> {
+            OrderItem orderItem = orderItems.get(item.getName());
+            orderItem.decrementQuantity();
+        });
+
+        return calculateTotalPrice(orderItems.values());
     }
 
     private void addItemToOrder(Map<Character, OrderItem> orderItems, Character item) {
@@ -45,7 +48,7 @@ public class CheckliteSolution {
         }
     }
 
-    private int calculateTotalPrice(List<OrderItem> orderItems) {
+    private int calculateTotalPrice(Collection<OrderItem> orderItems) {
         return orderItems.stream().mapToInt(OrderItem::computePrice).sum();
     }
 

@@ -18,6 +18,12 @@ public class OrderItem {
         purchasedQuantity = purchasedQuantity + 1;
     }
 
+    public void decrementQuantity() {
+        if (purchasedQuantity > 0) {
+            purchasedQuantity = purchasedQuantity - 1;
+        }
+    }
+
     public int computePrice() {
         if(purchasedItem.getPriceBasedOffer().isPresent()) {
             PriceBasedOffer priceBasedOffer = purchasedItem.getPriceBasedOffer().get();
