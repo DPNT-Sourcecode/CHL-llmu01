@@ -20,4 +20,9 @@ public class CheckliteSolutionTest {
         assertThat(solution.checklite(null), is(equalTo(-1)));
     }
 
+    @Test
+    public void skuStringIsTrimmed() {
+        assertThat(solution.checklite("  "), is(equalTo(-1)));
+    }
+
 }
