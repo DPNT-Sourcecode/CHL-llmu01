@@ -50,4 +50,13 @@ public class OrderItemTest {
 
         assertThat(orderItem.computePrice()).isEqualTo(180);
     }
+
+    @Test
+    public void computePriceWhenMultipleOffersAreApplicable() {
+        SpecialOffer specialOffer = new SpecialOffer(3, 130);
+        Item item = new Item('A', 50, Optional.of(specialOffer));
+        OrderItem orderItem = new OrderItem(item, 8);
+
+        assertThat(orderItem.computePrice()).isEqualTo(360);
+    }
 }

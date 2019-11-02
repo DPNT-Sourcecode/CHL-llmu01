@@ -22,7 +22,10 @@ public class OrderItem {
                return specialOffer.getOfferPrice();
            } else if (purchasedQuantity > specialOffer.getOfferQuantity()) {
                int offerApplicableQuantity =  purchasedQuantity / specialOffer.getOfferQuantity();
-               
+               int normalPriceQuantity = purchasedQuantity % specialOffer.getOfferQuantity();
+
+               return offerApplicableQuantity * specialOffer.getOfferPrice()
+                       + normalPriceQuantity * purchasedItem.getBasePrice();
            }
         }
 
