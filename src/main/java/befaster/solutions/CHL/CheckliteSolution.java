@@ -7,7 +7,6 @@ public class CheckliteSolution {
     private Map<Character, Integer> priceTable;
 
     public CheckliteSolution(Map<Character, Integer> priceTable) {
-
         this.priceTable = priceTable;
     }
 
