@@ -65,7 +65,7 @@ public class OrderItemTest {
         PriceBasedOffer offer2 = new PriceBasedOffer(3, 130);
 
         Item item = new Item('A', 50);
-        item.setPriceBasedOffers(Lists.newArrayList(offer1, offer2));
+        item.setPriceBasedOffers(Lists.newArrayList(offer2, offer1));
         OrderItem orderItem = new OrderItem(item, 5);
 
         assertThat(orderItem.computePrice()).isEqualTo(200);

@@ -44,6 +44,7 @@ public class Item {
 
     public void setPriceBasedOffers(List<PriceBasedOffer> priceBasedOffers) {
         this.priceBasedOffers = priceBasedOffers;
+        priceBasedOffers.sort(Comparator.comparingInt(PriceBasedOffer::getOfferQuantity).reversed());
     }
 
     public void setFreebieOffer(FreebieOffer freebieOffer) {
@@ -65,3 +66,4 @@ public class Item {
 
 
 }
+
