@@ -87,7 +87,3 @@ public class CheckliteSolution {
         priceTable.put(itemF.getName(), itemF);
     }
 }
-
-
-
-

@@ -118,4 +118,3 @@ public class OrderItemTest {
         assertThat(orderItem.applyFreebie()).hasValue(Lists.newArrayList());
     }
 }
-
