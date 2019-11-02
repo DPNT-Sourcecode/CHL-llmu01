@@ -20,10 +20,9 @@ public class CheckliteSolution {
             return -1;
         }
 
-        if("A".equalsIgnoreCase(skus)) {
-            return 50;
-        }
-        return 0;
+        char[] items = skus.toCharArray();
+        return priceTable.get(items[0]);
     }
 }
+
 

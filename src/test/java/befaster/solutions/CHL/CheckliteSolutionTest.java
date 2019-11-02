@@ -22,10 +22,11 @@ public class CheckliteSolutionTest {
     @Mock
     private Map<Character, Integer> priceTable;
 
-    private CheckliteSolution solution = new CheckliteSolution(priceTable);
+    private CheckliteSolution solution;
 
     @Before
     public void setup() {
+        solution = new CheckliteSolution(priceTable);
         when(priceTable.get('A')).thenReturn(50);
     }
 
