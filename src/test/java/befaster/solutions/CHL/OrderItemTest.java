@@ -96,6 +96,17 @@ public class OrderItemTest {
     }
 
     @Test
+    public void freebieOfferWithSameItems() {
+        Item freeItem = new Item('F', 0);
+        FreebieOffer freebieOffer = new FreebieOffer(2, freeItem);
+        Item source = new Item('F', 10, freebieOffer);
+
+        OrderItem orderItem = new OrderItem(source, 3);
+
+        assertThat(orderItem.applyFreebie()).isPresent().hasValue(Lists.newArrayList(freeItem));
+    }
+
+    @Test
     public void freebieOfferIsNotAppliedWhenQuantityDoesNotMatch() {
         Item freeItem = new Item('B', 0);
         FreebieOffer freebieOffer = new FreebieOffer(2, freeItem);

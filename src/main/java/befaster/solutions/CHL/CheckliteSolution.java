@@ -76,8 +76,14 @@ public class CheckliteSolution {
         priceTable.put(itemD.getName(), itemD);
 
         Item itemE = new Item('E', 40);
-        FreebieOffer freebieOffer = new FreebieOffer(2, new Item(itemB.getName(), 0));
-        itemE.setFreebieOffer(freebieOffer);
+        FreebieOffer offerE = new FreebieOffer(2, new Item(itemB.getName(), 0));
+        itemE.setFreebieOffer(offerE);
         priceTable.put(itemE.getName(), itemE);
+
+        Item itemF = new Item('F', 10);
+        FreebieOffer offerF = new FreebieOffer(2, new Item(itemF.getName(), 0));
+        itemE.setFreebieOffer(offerF);
+        priceTable.put(itemE.getName(), itemF);
     }
 }
+
