@@ -24,5 +24,9 @@ public class CheckliteSolutionTest {
     public void skuStringIsTrimmed() {
         assertThat(solution.checklite("  "), is(equalTo(-1)));
     }
-    
+
+    @Test
+    public void calculateCostOfSingleSku() {
+        assertThat(solution.checklite("A"), is(equalTo(50)));
+    }
 }
