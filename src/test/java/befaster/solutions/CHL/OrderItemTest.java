@@ -80,7 +80,7 @@ public class OrderItemTest {
         OrderItem orderItem = new OrderItem(source, 2);
 
         assertThat(orderItem.computePrice()).isEqualTo(100);
-        assertThat(orderItem.applyFreebie()).isPresent().hasValue(freeItem);
+        assertThat(orderItem.applyFreebie()).isPresent().hasValue(Lists.newArrayList(freeItem));
     }
 
     @Test
@@ -89,10 +89,10 @@ public class OrderItemTest {
         FreebieOffer freebieOffer = new FreebieOffer(2, freeItem);
         Item source = new Item('E', 50, freebieOffer);
 
-        OrderItem orderItem = new OrderItem(source, 3);
+        OrderItem orderItem = new OrderItem(source, 5);
 
-        assertThat(orderItem.computePrice()).isEqualTo(50);
-        assertThat(orderItem.applyFreebie()).isPresent().hasValue(freeItem);
+        assertThat(orderItem.computePrice()).isEqualTo(250);
+        assertThat(orderItem.applyFreebie()).isPresent().hasValue(Lists.newArrayList(freeItem, freeItem));
     }
 
     @Test
@@ -107,3 +107,4 @@ public class OrderItemTest {
         assertThat(orderItem.applyFreebie()).isEmpty();
     }
 }
+

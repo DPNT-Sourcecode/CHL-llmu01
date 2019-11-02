@@ -35,7 +35,7 @@ public class CheckliteSolution {
     private void applyFreebieOffers(Map<Character, OrderItem> orderItems) {
         List<Item> freebieItems = new LinkedList<>();
         for (OrderItem orderItem : orderItems.values()) {
-            orderItem.applyFreebie().map(freebieItems::add);
+            orderItem.applyFreebie().map(freebieItems::addAll);
         }
         freebieItems.forEach(item -> {
             if (orderItems.containsKey(item.getName())) {
@@ -81,4 +81,5 @@ public class CheckliteSolution {
         priceTable.put(itemE.getName(), itemE);
     }
 }
+
 

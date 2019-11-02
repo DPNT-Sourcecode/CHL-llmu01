@@ -5,6 +5,8 @@ import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class OrderItem {
 
@@ -49,27 +51,21 @@ public class OrderItem {
                 .filter(element -> purchasedQuantity >= element.getOfferQuantity()).findAny());
     }
 
-    public Optional<Item> applyFreebie() {
-        if(purchasedItem.getFreebieOffer().isPresent()) {
-            FreebieOffer freebieOffer = purchasedItem.getFreebieOffer().get();
-
-            if (purchasedQuantity == freebieOffer.getOfferQuantity()) {
-                return Optional.of(freebieOffer.getFreebieItem());
-            }
-        }
-        return Optional.empty();
+    public Optional<List<Item>> applyFreebie() {
+        return Optional.of(getFreeItems(purchasedQuantity));
     }
 
     private List<Item> getFreeItems(int quantity) {
+        List<Item> freeItems = Lists.newArrayList();
         if(purchasedItem.getFreebieOffer().isPresent()) {
             FreebieOffer freebieOffer = purchasedItem.getFreebieOffer().get();
 
             int offerApplicableQuantity = quantity / freebieOffer.getOfferQuantity();
-            int remainingQuantity = quantity % freebieOffer.getOfferQuantity();
-
-            return Lists.newArrayList(freebieOffer.getFreebieItem());
+            freeItems = IntStream.range(0, offerApplicableQuantity)
+                    .mapToObj(ignored -> new Item(freebieOffer.getFreebieItem().getName(), 0))
+                    .collect(Collectors.toList());
         }
-        return Lists.newArrayList();
+        return freeItems;
     }
 
     @Override
@@ -87,6 +83,7 @@ public class OrderItem {
         return Objects.hash(purchasedItem, purchasedQuantity, price);
     }
 }
+
 
 
 
