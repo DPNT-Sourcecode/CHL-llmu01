@@ -22,9 +22,8 @@ dependencies {
 
     testCompile('org.junit.jupiter:junit-jupiter:5.5.2')
     testCompile('org.junit.jupiter:junit-jupiter-params:5.5.2')
-//    testCompile ('junit:junit:4.12') {
-//        exclude module : 'hamcrest-core'
-//    }
+
+    testCompile('org.assertj:assertj-core:3.14.0')
     testCompile ('org.mockito:mockito-core:1.10.19') {
         exclude module : 'hamcrest-core'
     }

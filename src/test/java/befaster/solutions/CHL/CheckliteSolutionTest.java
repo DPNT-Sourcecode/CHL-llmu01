@@ -1,10 +1,13 @@
 package befaster.solutions.CHL;
 
-import org.junit.Test;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 public class CheckliteSolutionTest {
 
@@ -12,21 +15,22 @@ public class CheckliteSolutionTest {
 
     @Test
     public void handleEmptySkus() {
-        assertThat(solution.checklite(""), is(equalTo(-1)));
+        assertThat(solution.checklite("")).isEqualTo(-1);
     }
 
     @Test
     public void handleNullSkus() {
-        assertThat(solution.checklite(null), is(equalTo(-1)));
+        assertThat(solution.checklite(null)).isEqualTo(-1);
     }
 
     @Test
     public void skuStringIsTrimmed() {
-        assertThat(solution.checklite("  "), is(equalTo(-1)));
+        assertThat(solution.checklite("   ")).isEqualTo(-1);
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource({"", ""})
     public void calculateCostOfSingleSku() {
-        assertThat(solution.checklite("A"), is(equalTo(50)));
+        assertThat(solution.checklite("A")).isEqualTo(50);
     }
 }
