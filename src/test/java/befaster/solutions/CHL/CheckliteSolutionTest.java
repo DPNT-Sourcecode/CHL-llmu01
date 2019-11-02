@@ -67,6 +67,6 @@ public class CheckliteSolutionTest {
 
     @Test
     public void checkoutWithFreebieOffers() {
-        assertThat(solution.checklite("AAEE"), is(equalTo(130)));
+        assertThat(solution.checklite("BBEE"), is(equalTo(110)));
     }
 }
