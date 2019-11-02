@@ -78,4 +78,16 @@ public class OrderItemTest {
         assertThat(orderItem.computePrice()).isEqualTo(100);
         assertThat(orderItem.applyFreebie()).isPresent().hasValue(freeItem);
     }
+
+    @Test
+    public void freebieOfferIsNotAppliedWhenQuantityDoesNotMatch() {
+        Item freeItem = new Item('B', 0);
+        FreebieOffer freebieOffer = new FreebieOffer(2, freeItem);
+        Item source = new Item('A', 50, freebieOffer);
+
+        OrderItem orderItem = new OrderItem(source, 1);
+
+        assertThat(orderItem.computePrice()).isEqualTo(50);
+        assertThat(orderItem.applyFreebie()).isEmpty();
+    }
 }
