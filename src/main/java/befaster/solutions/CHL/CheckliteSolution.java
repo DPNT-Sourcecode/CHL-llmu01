@@ -1,18 +1,13 @@
 package befaster.solutions.CHL;
 
-import java.util.Collections;
-import java.util.Map;
+import java.util.*;
 
 public class CheckliteSolution {
 
-    private Map<Character, Integer> priceTable;
+    private Map<Character, Item> priceTable = new HashMap<>();
 
     public CheckliteSolution() {
-        this(Collections.emptyMap());
-    }
-
-    public CheckliteSolution(Map<Character, Integer> priceTable) {
-        this.priceTable = priceTable;
+        initialisePriceTable();
     }
 
     public Integer checklite(String skus) {
@@ -21,12 +16,30 @@ public class CheckliteSolution {
 
         char[] items = skus.toCharArray();
 
-        int total = 0;
+        Set<OrderItem> orderItems = new HashSet<>();
         for (Character item: items) {
             char upperCase = Character.toUpperCase(item);
-            total = total + priceTable.getOrDefault(upperCase, 0);
+
+            if (priceTable.containsKey(upperCase)) {
+                orderItems.add(new OrderItem(priceTable.get(upperCase), 1));
+            }
         }
 
-        return total;
+        return orderItems.stream().mapToInt(OrderItem::computePrice).sum();
+    }
+
+    private void initialisePriceTable() {
+        SpecialOffer offerA = new SpecialOffer(3, 130);
+        Item itemA = new Item('A', 50, Optional.of(offerA));
+        priceTable.put(itemA.getName(), itemA);
+
+        SpecialOffer offerB = new SpecialOffer(2, 45);
+        Item itemB = new Item('B', 30, Optional.of(offerB));
+        priceTable.put(itemB.getName(), itemB);
+
+        Item itemC = new Item('C', 20, Optional.empty());
+        priceTable.put(itemC.getName(), itemC);
+        Item itemD = new Item('D', 15, Optional.empty());
+        priceTable.put(itemD.getName(), itemD);
     }
 }

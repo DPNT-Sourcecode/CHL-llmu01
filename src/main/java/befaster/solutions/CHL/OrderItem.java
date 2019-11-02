@@ -1,5 +1,7 @@
 package befaster.solutions.CHL;
 
+import java.util.Objects;
+
 public class OrderItem {
 
     private Item purchasedItem;
@@ -31,5 +33,20 @@ public class OrderItem {
 
         price = purchasedQuantity * purchasedItem.getBasePrice();
         return price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OrderItem orderItem = (OrderItem) o;
+        return purchasedQuantity == orderItem.purchasedQuantity &&
+                price == orderItem.price &&
+                Objects.equals(purchasedItem, orderItem.purchasedItem);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(purchasedItem, purchasedQuantity, price);
     }
 }
