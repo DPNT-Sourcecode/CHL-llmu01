@@ -1,5 +1,7 @@
 package befaster.solutions.CHL;
 
+import com.google.common.collect.Lists;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,6 +60,18 @@ public class OrderItem {
         return Optional.empty();
     }
 
+    private List<Item> getFreeItems(int quantity) {
+        if(purchasedItem.getFreebieOffer().isPresent()) {
+            FreebieOffer freebieOffer = purchasedItem.getFreebieOffer().get();
+
+            int offerApplicableQuantity = quantity / freebieOffer.getOfferQuantity();
+            int remainingQuantity = quantity % freebieOffer.getOfferQuantity();
+
+            return Lists.newArrayList(freebieOffer.getFreebieItem());
+        }
+        return Lists.newArrayList();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -73,5 +87,6 @@ public class OrderItem {
         return Objects.hash(purchasedItem, purchasedQuantity, price);
     }
 }
+
 
 
