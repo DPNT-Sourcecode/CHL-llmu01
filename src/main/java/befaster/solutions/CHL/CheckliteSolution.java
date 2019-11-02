@@ -1,8 +1,7 @@
 package befaster.solutions.CHL;
 
-import com.google.common.collect.Lists;
-
 import java.util.*;
+import static com.google.common.collect.Lists.newArrayList;
 
 public class CheckliteSolution {
 
@@ -28,7 +27,6 @@ public class CheckliteSolution {
         }
 
         applyFreebieOffers(orderItems);
-
         return calculateTotalPrice(orderItems.values());
     }
 
@@ -63,7 +61,7 @@ public class CheckliteSolution {
         PriceBasedOffer offerA = new PriceBasedOffer(3, 130);
         PriceBasedOffer offerA2 = new PriceBasedOffer(5, 200);
         Item itemA = new Item('A', 50);
-        itemA.setPriceBasedOffers(Lists.newArrayList(offerA, offerA2));
+        itemA.setPriceBasedOffers(newArrayList(offerA, offerA2));
         priceTable.put(itemA.getName(), itemA);
 
         PriceBasedOffer offerB = new PriceBasedOffer(2, 45);
@@ -89,7 +87,15 @@ public class CheckliteSolution {
         Item itemG = new Item('G', 20);
         priceTable.put(itemG.getName(), itemG);
 
-        Item itemH = new Item('H', )
+        Item itemH = new Item('H', 10);
+        itemH.setPriceBasedOffers(newArrayList(getPriceBasedOffer(5, 45),
+                getPriceBasedOffer(10, 80)));
+        priceTable.put(itemH.getName(), itemH);
+    }
+
+    private PriceBasedOffer getPriceBasedOffer(int offerQuantity, int offerPrice) {
+        return new PriceBasedOffer(offerQuantity, offerPrice);
     }
 }
+
 
