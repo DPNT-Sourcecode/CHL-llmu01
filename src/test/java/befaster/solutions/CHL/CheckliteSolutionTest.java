@@ -11,9 +11,9 @@ import static org.junit.Assert.assertThat;
 
 public class CheckliteSolutionTest {
 
-    private private Map<Character, Integer> priceTable = new HashMap<>();
-    private SuperMarket superMarket = new SuperMarket();
-    private CheckliteSolution solution = new CheckliteSolution();
+    private Map<Character, Integer> priceTable = new HashMap<>();
+
+    private CheckliteSolution solution = new CheckliteSolution(priceTable);
 
     @Test
     public void handleEmptySkus() {
@@ -37,6 +37,8 @@ public class CheckliteSolutionTest {
 
     @Test
     public void calculateUsesValueFromPriceTable() {
+        priceTable.put('A', 50);
+
 
     }
 }
