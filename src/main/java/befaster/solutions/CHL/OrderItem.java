@@ -1,5 +1,6 @@
 package befaster.solutions.CHL;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -25,12 +26,14 @@ public class OrderItem {
     }
 
     public int computePrice() {
-        if(purchasedItem.getPriceBasedOffers().isPresent()) {
-            PriceBasedOffer priceBasedOffer = purchasedItem.getPriceBasedOffers().get().get(0);
+        Optional<PriceBasedOffer> matchingOffer = findMatchingOffer(purchasedQuantity, purchasedItem.getPriceBasedOffers());
+        if(matchingOffer.isPresent()) {
+            PriceBasedOffer priceBasedOffer = matchingOffer.get();
 
-           if (purchasedQuantity == priceBasedOffer.getOfferQuantity()) {
-               return priceBasedOffer.getOfferPrice();
-           } else if (purchasedQuantity > priceBasedOffer.getOfferQuantity()) {
+//           if (purchasedQuantity == priceBasedOffer.getOfferQuantity()) {
+//               return priceBasedOffer.getOfferPrice();
+//           } else if (purchasedQuantity > priceBasedOffer.getOfferQuantity())
+           {
                int offerApplicableQuantity =  purchasedQuantity / priceBasedOffer.getOfferQuantity();
                int normalPriceQuantity = purchasedQuantity % priceBasedOffer.getOfferQuantity();
 
@@ -41,6 +44,11 @@ public class OrderItem {
 
         price = purchasedQuantity * purchasedItem.getBasePrice();
         return price;
+    }
+
+    private Optional<PriceBasedOffer> findMatchingOffer(int purchasedQuantity, Optional<List<PriceBasedOffer>> offers) {
+        return offers.flatMap(priceBasedOffers -> priceBasedOffers.stream()
+                .filter(element -> purchasedQuantity >= element.getOfferQuantity()).findAny());
     }
 
     public Optional<Item> applyFreebie() {
@@ -69,4 +77,3 @@ public class OrderItem {
         return Objects.hash(purchasedItem, purchasedQuantity, price);
     }
 }
-
