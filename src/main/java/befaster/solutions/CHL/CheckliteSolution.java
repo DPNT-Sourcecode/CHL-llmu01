@@ -1,8 +1,6 @@
 package befaster.solutions.CHL;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class CheckliteSolution {
 
@@ -27,7 +25,14 @@ public class CheckliteSolution {
             }
         }
 
-        return calculateTotalPrice(orderItems);
+        List<OrderItem> finalListOfItems = new LinkedList<>();
+        for (OrderItem orderItem : orderItems.values()) {
+            Optional<Item> freeItem = orderItem.applyFreebie();
+            freeItem.ifPresent(item -> finalListOfItems.add(new OrderItem(item, 1)));
+        }
+
+        finalListOfItems.addAll(orderItems.values());
+        return calculateTotalPrice(finalListOfItems);
     }
 
     private void addItemToOrder(Map<Character, OrderItem> orderItems, Character item) {
@@ -40,8 +45,8 @@ public class CheckliteSolution {
         }
     }
 
-    private int calculateTotalPrice(Map<Character, OrderItem> orderItems) {
-        return orderItems.values().stream().mapToInt(OrderItem::computePrice).sum();
+    private int calculateTotalPrice(List<OrderItem> orderItems) {
+        return orderItems.stream().mapToInt(OrderItem::computePrice).sum();
     }
 
     private void initialisePriceTable() {
@@ -64,3 +69,4 @@ public class CheckliteSolution {
         priceTable.put(itemE.getName(), itemE);
     }
 }
+
