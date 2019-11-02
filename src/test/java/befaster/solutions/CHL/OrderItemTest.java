@@ -66,9 +66,9 @@ public class OrderItemTest {
 
         Item item = new Item('A', 50);
         item.setPriceBasedOffers(Lists.newArrayList(offer2, offer1));
-        OrderItem orderItem = new OrderItem(item, 5);
+        OrderItem orderItem = new OrderItem(item, 9);
 
-        assertThat(orderItem.computePrice()).isEqualTo(200);
+        assertThat(orderItem.computePrice()).isEqualTo(380);
     }
 
     @Test
@@ -95,3 +95,4 @@ public class OrderItemTest {
         assertThat(orderItem.applyFreebie()).isEmpty();
     }
 }
+

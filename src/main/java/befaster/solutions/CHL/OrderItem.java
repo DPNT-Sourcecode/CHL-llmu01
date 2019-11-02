@@ -27,19 +27,13 @@ public class OrderItem {
 
     public int computePrice() {
         Optional<PriceBasedOffer> matchingOffer = findMatchingOffer(purchasedQuantity, purchasedItem.getPriceBasedOffers());
-        if(matchingOffer.isPresent()) {
+        if (matchingOffer.isPresent()) {
             PriceBasedOffer priceBasedOffer = matchingOffer.get();
+            int offerApplicableQuantity = purchasedQuantity / priceBasedOffer.getOfferQuantity();
+            int normalPriceQuantity = purchasedQuantity % priceBasedOffer.getOfferQuantity();
 
-//           if (purchasedQuantity == priceBasedOffer.getOfferQuantity()) {
-//               return priceBasedOffer.getOfferPrice();
-//           } else if (purchasedQuantity > priceBasedOffer.getOfferQuantity())
-           {
-               int offerApplicableQuantity =  purchasedQuantity / priceBasedOffer.getOfferQuantity();
-               int normalPriceQuantity = purchasedQuantity % priceBasedOffer.getOfferQuantity();
-
-               return offerApplicableQuantity * priceBasedOffer.getOfferPrice()
-                       + normalPriceQuantity * purchasedItem.getBasePrice();
-           }
+            return offerApplicableQuantity * priceBasedOffer.getOfferPrice()
+                    + normalPriceQuantity * purchasedItem.getBasePrice();
         }
 
         price = purchasedQuantity * purchasedItem.getBasePrice();
@@ -77,3 +71,4 @@ public class OrderItem {
         return Objects.hash(purchasedItem, purchasedQuantity, price);
     }
 }
+
