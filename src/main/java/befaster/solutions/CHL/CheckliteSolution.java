@@ -39,8 +39,10 @@ public class CheckliteSolution {
         }
 
         freebieItems.forEach(item -> {
-            OrderItem orderItem = orderItems.get(item.getName());
-            orderItem.decrementQuantity();
+            if (orderItems.containsKey(item.getName())) {
+                OrderItem orderItem = orderItems.get(item.getName());
+                orderItem.decrementQuantity();
+            }
         });
     }
 

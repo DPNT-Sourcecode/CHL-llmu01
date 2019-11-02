@@ -76,5 +76,3 @@ public class CheckliteSolutionTest {
         assertThat(solution.checklite("BBEEB"), is(equalTo(125)));
     }
 }
-
-

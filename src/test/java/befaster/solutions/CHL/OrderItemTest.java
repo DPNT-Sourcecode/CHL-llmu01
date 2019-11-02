@@ -95,4 +95,3 @@ public class OrderItemTest {
         assertThat(orderItem.applyFreebie()).isEmpty();
     }
 }
-
