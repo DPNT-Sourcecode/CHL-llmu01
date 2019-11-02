@@ -1,6 +1,8 @@
 package befaster.solutions.CHL;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 public class CheckliteSolution {
 
@@ -49,3 +51,4 @@ public class CheckliteSolution {
         priceTable.put(itemD.getName(), itemD);
     }
 }
+
