@@ -1,7 +1,10 @@
 package befaster.solutions.HLO;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 
 public class HelloSolutionTest {
 
@@ -10,7 +13,7 @@ public class HelloSolutionTest {
     @Test
     public void sayHelloToFriend() {
         String message = helloSolution.hello("joe");
-        Assertions.assertThat(message).isEqualTo("Hello, joe!");
+        assertThat(message, is(equalTo("Hello, joe!")));
     }
 
 }
