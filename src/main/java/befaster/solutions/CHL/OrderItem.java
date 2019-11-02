@@ -4,7 +4,7 @@ public class OrderItem {
 
     private Item purchasedItem;
     private int quantity;
-    private int totalPrice;
+    private int price;
 
     public OrderItem(Item purchasedItem, int quantity) {
         this.purchasedItem = purchasedItem;
@@ -15,4 +15,8 @@ public class OrderItem {
         quantity = quantity + 1;
     }
 
+    public int computePrice() {
+        price = quantity * purchasedItem.getBasePrice();
+        return price;
+    }
 }
