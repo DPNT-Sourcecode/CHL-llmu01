@@ -91,9 +91,14 @@ public class CheckliteSolution {
         itemH.setPriceBasedOffers(newArrayList(getPriceBasedOffer(5, 45),
                 getPriceBasedOffer(10, 80)));
         priceTable.put(itemH.getName(), itemH);
+
+        Item itemJ = new Item('J', 60);
+        priceTable.put( 'J', itemJ);
+        
     }
 
     private PriceBasedOffer getPriceBasedOffer(int offerQuantity, int offerPrice) {
         return new PriceBasedOffer(offerQuantity, offerPrice);
     }
 }
+
