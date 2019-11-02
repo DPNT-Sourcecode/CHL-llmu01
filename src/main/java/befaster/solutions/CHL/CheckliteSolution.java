@@ -23,11 +23,10 @@ public class CheckliteSolution {
 
         int total = 0;
         for (Character item: items) {
-            total = total + priceTable.get(Character.toUpperCase(item));
+            char upperCase = Character.toUpperCase(item);
+            total = total + priceTable.getOrDefault(upperCase, 0);
         }
 
         return total;
     }
 }
-
-
