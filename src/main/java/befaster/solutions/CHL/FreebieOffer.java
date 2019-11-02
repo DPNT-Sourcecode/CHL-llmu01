@@ -18,4 +18,3 @@ public class FreebieOffer {
         return offerQuantity;
     }
 }
-

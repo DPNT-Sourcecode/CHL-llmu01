@@ -34,4 +34,3 @@ public class PriceBasedOffer {
         return Objects.hash(offerQuantity, offerPrice);
     }
 }
-
