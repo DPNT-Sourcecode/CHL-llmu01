@@ -68,11 +68,9 @@ public class CheckliteSolution {
         Item itemB = new Item('B', 30, offerB);
         priceTable.put(itemB.getName(), itemB);
 
-        Item itemC = new Item('C', 20);
-        priceTable.put(itemC.getName(), itemC);
+        addItemToPriceTable('C', 20);
 
-        Item itemD = new Item('D', 15);
-        priceTable.put(itemD.getName(), itemD);
+        addItemToPriceTable('D', 15);
 
         Item itemE = new Item('E', 40);
         FreebieOffer offerE = new FreebieOffer(2, new Item(itemB.getName(), 0));
@@ -84,30 +82,77 @@ public class CheckliteSolution {
         itemF.setFreebieOffer(offerF);
         priceTable.put(itemF.getName(), itemF);
 
-        Item itemG = new Item('G', 20);
-        priceTable.put(itemG.getName(), itemG);
+        addItemToPriceTable('G', 20);
 
         Item itemH = new Item('H', 10);
         itemH.setPriceBasedOffers(newArrayList(getPriceBasedOffer(5, 45),
                 getPriceBasedOffer(10, 80)));
         priceTable.put(itemH.getName(), itemH);
 
-        Item itemJ = new Item('J', 60);
-        priceTable.put(itemJ.getName(), itemJ);
+        addItemToPriceTable('I', 35);
 
-        Item itemK = new Item('H', 10);
+        addItemToPriceTable('J', 60);
+
+        Item itemK = new Item('K', 80);
         itemK.setPriceBasedOffers(newArrayList(getPriceBasedOffer(2, 150)));
         priceTable.put(itemK.getName(), itemK);
 
-        Item itemL = new Item('L', 90);
-        priceTable.put(itemL.getName(), itemL);
+        addItemToPriceTable('L', 90);
 
-        Item itemM = new Item('M', 90);
-        priceTable.put(itemL.getName(), itemL);
+        Item itemM = new Item('M', 15);
+        priceTable.put(itemM.getName(), itemM);
 
+        Item itemN = new Item('N', 40);
+        itemN.setFreebieOffer(new FreebieOffer(3, new Item(itemM.getName(), 0)));
+        priceTable.put(itemN.getName(), itemN);
+
+        addItemToPriceTable('O', 10);
+
+        Item itemP = new Item('P', 50);
+        itemP.setPriceBasedOffers(newArrayList(getPriceBasedOffer(5, 200)));
+        priceTable.put(itemP.getName(), itemP);
+
+        Item itemQ = new Item('Q', 30);
+        itemQ.setPriceBasedOffers(newArrayList(getPriceBasedOffer(3, 80)));
+        priceTable.put(itemQ.getName(), itemQ);
+
+        Item itemR = new Item('R', 50);
+        itemR.setFreebieOffer(new FreebieOffer(3, new Item(itemQ.getName(), 0)));
+        priceTable.put(itemR.getName(), itemR);
+
+        addItemToPriceTable('S', 30);
+
+        addItemToPriceTable('T', 20);
+
+        Item itemU = new Item('U', 40);
+        itemU.setFreebieOffer(new FreebieOffer(3,
+                new Item(itemU.getName(), 0)));
+        priceTable.put(itemU.getName(), itemU);
+
+        Item itemV = new Item('V', 50);
+        itemV.setPriceBasedOffers(newArrayList(
+                getPriceBasedOffer(2, 90),
+                getPriceBasedOffer(3, 130)
+        ));
+        priceTable.put(itemV.getName(), itemV);
+
+        addItemToPriceTable('W', 20);
+
+        addItemToPriceTable('X', 90);
+
+        addItemToPriceTable('Y', 10);
+
+        addItemToPriceTable('Z', 50);
+
+    }
+
+    private void addItemToPriceTable(char x, int i) {
+        Item itemX = new Item(x, i);
+        priceTable.put(itemX.getName(), itemX);
     }
 
     private PriceBasedOffer getPriceBasedOffer(int offerQuantity, int offerPrice) {
         return new PriceBasedOffer(offerQuantity, offerPrice);
     }
 }
+
