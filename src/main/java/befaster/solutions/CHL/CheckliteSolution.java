@@ -156,6 +156,3 @@ public class CheckliteSolution {
         return new PriceBasedOffer(offerQuantity, offerPrice);
     }
 }
-
-
-
