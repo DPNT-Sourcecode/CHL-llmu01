@@ -126,7 +126,7 @@ public class CheckliteSolution {
         addItemToPriceTable('T', 20);
 
         Item itemU = new Item('U', 40);
-        itemU.setFreebieOffer(new FreebieOffer(3,
+        itemU.setFreebieOffer(new FreebieOffer(4,
                 new Item(itemU.getName(), 0)));
         priceTable.put(itemU.getName(), itemU);
 
@@ -156,5 +156,6 @@ public class CheckliteSolution {
         return new PriceBasedOffer(offerQuantity, offerPrice);
     }
 }
+
 
 
