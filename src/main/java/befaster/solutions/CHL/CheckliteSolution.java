@@ -20,6 +20,7 @@ public class CheckliteSolution {
 
         Map<Character, OrderItem> orderItems = new HashMap<>();
         for (Character item: items) {
+            System.out.println("looking up item=" + item);
             if (priceTable.containsKey(item)) {
                 addItemToOrder(orderItems, item);
             } else {
@@ -156,3 +157,4 @@ public class CheckliteSolution {
         return new PriceBasedOffer(offerQuantity, offerPrice);
     }
 }
+
